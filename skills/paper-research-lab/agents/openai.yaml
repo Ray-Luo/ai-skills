@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper Research Lab｜论文研究审查"
+  short_description: "研究路径重建、逐图证据审查、可证伪的实验方案"
+  default_prompt: "Use $paper-research-lab to analyze this paper in three layers: research reconstruction, figure-by-figure evidence audit, and falsifiable research cards. Please answer in Chinese."
