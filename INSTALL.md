@@ -2,13 +2,13 @@
 
 此仓库的 **`skills/<skill-name>/` 是源文件目录**。要使用它，必须通过产品支持的 Skills 导入流程安装，或把完整目录放入 Codex 的 Skill 搜索路径。只下载单个 `SKILL.md`，并不等于安装了它引用的全部模板与参考资料。
 
-本文以 [`paper-research-lab`](skills/paper-research-lab/) 为例。以下方式对应 **v1.0.0**。
+本文以 [`paper-research-lab`](skills/paper-research-lab/) 为例。以下方式对应 **v1.1.0**。
 
 ## 1. ChatGPT：上传 Skill ZIP
 
 **前提：** 账号/工作区已启用 Skills，且管理员允许创建或上传。当前公开说明中，ChatGPT Skills 面向符合条件的 Business / Enterprise / Healthcare / Edu 工作区；其他账号不应假定已有相同入口。
 
-1. 下载 [**paper-research-lab-v1.0.0.zip**](dist/paper-research-lab-v1.0.0.zip)。该 ZIP 包含单个顶层目录 `paper-research-lab/` 和内部全部 Skill 文件。
+1. 下载 [**paper-research-lab-v1.1.0.zip**](dist/paper-research-lab-v1.1.0.zip)。该 ZIP 包含单个顶层目录 `paper-research-lab/` 和内部全部 Skill 文件。
 2. 打开 ChatGPT，进入 **Plugins → Skills**（如该入口对你的工作区可用）。
 3. 点击 **Create → Upload from your computer**，选择下载的 ZIP。
 4. 根据页面完成检查与安装；上传成功与实际可调用是两个步骤，以界面确认结果为准。
@@ -88,11 +88,12 @@ cp -R ../ai-skills/skills/paper-research-lab .agents/skills/
 从仓库根目录运行（需要 Python 3 标准库，无需第三方包）：
 
 ```bash
-python3 scripts/package_skill.py paper-research-lab --version 1.0.0
-unzip -l dist/paper-research-lab-v1.0.0.zip
+python3 scripts/package_skill.py paper-research-lab --version 1.1.0
+unzip -l dist/paper-research-lab-v1.1.0.zip
+python3 scripts/validate_skill.py paper-research-lab --version 1.1.0
 ```
 
-压缩包必须包含**唯一**顶层目录 `paper-research-lab/`，其中有 `SKILL.md`，且引用的 `agents/`、`assets/`、`references/` 均随包提供。每次修改 Skill 文件后，更新版本号、对应 ZIP、入口 README 和 CHANGELOG，并核验 ZIP 内容。
+压缩包必须包含**唯一**顶层目录 `paper-research-lab/`，其中有 `SKILL.md`，且引用的 `agents/`、`assets/`、`references/` 均随包提供。每次修改 Skill 文件后，更新版本号、对应 ZIP、入口 README 和 CHANGELOG，并运行上述验证脚本检查本地引用、ZIP CRC 和 ZIP 与源码内容一致。对于领域路由，还需参考 [`tests/reading-scenarios.md`](tests/reading-scenarios.md) 手动核验实际模型行为。
 
 ## 5. Troubleshooting｜常见问题
 
